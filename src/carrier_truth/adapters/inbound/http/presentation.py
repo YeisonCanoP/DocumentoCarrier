@@ -68,7 +68,7 @@ _NEXT_ACTION: dict[VerificationStatus, str] = {
 _FIELD_LABELS = {
     "cliente": "Cliente",
     "carrier": "Carrier",
-    "cobertura": "Cobertura (face amount)",
+    "cobertura": "Cobertura (monto asegurado)",
     "premium": "Prima",
 }
 
