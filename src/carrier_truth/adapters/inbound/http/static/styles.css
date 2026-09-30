@@ -34,32 +34,62 @@ body {
 /* ---------- cabecera ---------- */
 
 .topbar {
-  padding: 20px 28px;
+  padding: 16px 28px;
   border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 16px 28px;
 }
 
-.topbar-title {
-  max-width: 620px;
+/* ---------- marca ---------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
 
-.topbar-title h1 {
-  margin: 0 0 6px;
-  font-size: 20px;
+.brand-mark {
+  flex-shrink: 0;
+  color: var(--accent);
 }
 
-.topbar-title p {
-  margin: 0;
-  color: var(--text-dim);
-  font-size: 13.5px;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
-.topbar-title strong {
+.brand-name {
+  font-size: 16.5px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-tagline {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ---------- meta: leyenda + entorno ---------- */
+
+.topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
 .legend {
@@ -68,40 +98,48 @@ body {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 10px;
-  border-radius: 8px;
   font-size: 12px;
+  color: var(--text-dim);
   white-space: nowrap;
-  border: 1px solid transparent;
 }
 
-.legend-item.ok {
-  background: var(--ok-bg);
-  border-color: var(--ok-border);
-  color: var(--ok);
+.legend-item .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.legend-item.warn {
-  background: var(--warn-bg);
-  border-color: var(--warn-border);
-  color: var(--warn);
+.legend-item.ok .dot {
+  background: var(--ok);
 }
 
-.legend-item.danger {
-  background: var(--danger-bg);
-  border-color: var(--danger-border);
-  color: var(--danger);
+.legend-item.warn .dot {
+  background: var(--warn);
 }
 
-.legend-item strong {
-  color: inherit;
+.legend-item.danger .dot {
+  background: var(--danger);
+}
+
+.env-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 8px;
+  white-space: nowrap;
+  cursor: default;
 }
 
 .legend-icon {
@@ -692,5 +730,15 @@ details.evidence[open] summary::before {
   }
   .compare-grid {
     grid-template-columns: 1fr;
+  }
+  .topbar {
+    padding: 14px 18px;
+  }
+  .topbar-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .brand-name {
+    max-width: 60vw;
   }
 }

@@ -8,28 +8,31 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="topbar-title">
-      <h1>La Verdad del Documento del Carrier</h1>
-      <p>
-        Comparamos lo que pidió el cliente, lo que muestra la pantalla y lo que
-        <strong>en realidad dice el documento del carrier</strong>. Si algo no
-        cuadra, te lo decimos — nunca lo escondemos ni lo adivinamos.
-      </p>
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <path d="M12 2.4 4.5 5.3v5.9c0 5 3.3 8.4 7.5 8.8 4.2-.4 7.5-3.8 7.5-8.8V5.3L12 2.4Z"
+              fill="currentColor" opacity="0.14" />
+        <path d="M12 2.4 4.5 5.3v5.9c0 5 3.3 8.4 7.5 8.8 4.2-.4 7.5-3.8 7.5-8.8V5.3L12 2.4Z"
+              fill="none" stroke="currentColor" stroke-width="1.3" />
+        <path d="M8.4 12.1 10.8 14.5 15.6 9.6" fill="none" stroke="currentColor"
+              stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">La Verdad del Documento del Carrier</span>
+        <span class="brand-tagline">Verificación con procedencia por línea de documento</span>
+      </div>
     </div>
-    <ul class="legend" aria-label="Qué significa cada color">
-      <li class="legend-item ok">
-        <span class="legend-icon">✅</span>
-        <span><strong>Verificado</strong> — puedes confiar en el dato</span>
-      </li>
-      <li class="legend-item warn">
-        <span class="legend-icon">⚠️</span>
-        <span><strong>Revisar</strong> — coincide, pero hay algo que aclarar</span>
-      </li>
-      <li class="legend-item danger">
-        <span class="legend-icon">⛔</span>
-        <span><strong>No confiable</strong> — no lo presentes como un hecho</span>
-      </li>
-    </ul>
+
+    <div class="topbar-meta">
+      <ul class="legend" aria-label="Estados de verificación">
+        <li class="legend-item ok"><span class="dot"></span>Verificado</li>
+        <li class="legend-item warn"><span class="dot"></span>Revisar</li>
+        <li class="legend-item danger"><span class="dot"></span>No confiable</li>
+      </ul>
+      <span class="env-badge" title="Ningún dato de este paquete corresponde a un cliente real">
+        Datos de prueba
+      </span>
+    </div>
   </header>
 
   <main class="layout">
