@@ -86,18 +86,26 @@ function renderEvidence(evidence) {
       <summary>Ver procedencia</summary>
       <div class="evidence-body">
         <div class="locator">${escapeHtml(evidence.locator)} · regla <code>${escapeHtml(evidence.rule_id)}</code></div>
-        <div class="snippet">${highlightMatch(evidence.snippet, evidence.matched_text)}</div>
+        <div class="snippet">${highlightSpan(evidence.snippet, evidence.char_span)}</div>
       </div>
     </details>
   `;
 }
 
-function highlightMatch(snippet, matchedText) {
-  const safeSnippet = escapeHtml(snippet);
-  if (!matchedText) return safeSnippet;
-  const safeMatch = escapeHtml(matchedText);
-  if (!safeSnippet.includes(safeMatch)) return safeSnippet;
-  return safeSnippet.replace(safeMatch, `<mark>${safeMatch}</mark>`);
+function highlightSpan(snippet, span) {
+  // Resalta la posición exacta que citó el backend (char_span), no la primera
+  // coincidencia de texto: dos apariciones iguales en la misma línea (p. ej.
+  // "$58.00" repetido en Base Premium y Premium) se distinguirían mal con
+  // `replace`, y el span es justo la prueba de precisión que ofrece la API.
+  const [a, b] = Array.isArray(span) ? span : [null, null];
+  if (a == null || b == null || a < 0 || b > snippet.length || a >= b) {
+    return escapeHtml(snippet);
+  }
+  return (
+    escapeHtml(snippet.slice(0, a)) +
+    `<mark>${escapeHtml(snippet.slice(a, b))}</mark>` +
+    escapeHtml(snippet.slice(b))
+  );
 }
 
 function renderField(field) {
