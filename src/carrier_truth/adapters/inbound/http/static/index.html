@@ -10,15 +10,35 @@
   <header class="topbar">
     <div class="topbar-title">
       <h1>La Verdad del Documento del Carrier</h1>
-      <p>La fuente de verdad para dinero y cobertura es el documento del carrier — nunca lo solicitado ni lo que muestra una interfaz.</p>
+      <p>
+        Comparamos lo que pidió el cliente, lo que muestra la pantalla y lo que
+        <strong>en realidad dice el documento del carrier</strong>. Si algo no
+        cuadra, te lo decimos — nunca lo escondemos ni lo adivinamos.
+      </p>
     </div>
+    <ul class="legend" aria-label="Qué significa cada color">
+      <li class="legend-item ok">
+        <span class="legend-icon">✅</span>
+        <span><strong>Verificado</strong> — puedes confiar en el dato</span>
+      </li>
+      <li class="legend-item warn">
+        <span class="legend-icon">⚠️</span>
+        <span><strong>Revisar</strong> — coincide, pero hay algo que aclarar</span>
+      </li>
+      <li class="legend-item danger">
+        <span class="legend-icon">⛔</span>
+        <span><strong>No confiable</strong> — no lo presentes como un hecho</span>
+      </li>
+    </ul>
   </header>
 
   <main class="layout">
     <aside class="sidebar">
       <div class="sidebar-head">
         <h2>Casos</h2>
-        <button id="refresh-btn" class="btn-ghost" title="Recargar casos">↻</button>
+        <button id="refresh-btn" class="btn-ghost" title="Volver a cargar los casos">
+          ↻ Actualizar
+        </button>
       </div>
       <ul id="case-list" class="case-list">
         <li class="case-list-empty">Cargando…</li>
@@ -27,34 +47,41 @@
       <div class="sidebar-divider"></div>
 
       <div class="upload-box">
-        <h2>Verificar un PDF cualquiera</h2>
-        <p class="hint">Demuestra que el motor no está afinado a estos 6 casos.</p>
+        <h2>¿Quieres probar con otro documento?</h2>
+        <p class="hint">
+          Sube cualquier PDF de una ilustración y dinos qué se pidió, para
+          comprobar que el sistema no está armado solo para estos 6 casos.
+        </p>
         <form id="verify-form">
           <label>
-            Documento (PDF)
+            Documento del carrier (PDF)
             <input type="file" name="document" accept="application/pdf" required />
+            <span class="field-help">El PDF de la ilustración que envió el carrier.</span>
           </label>
           <label>
-            Nombre solicitado
+            Nombre del cliente que se pidió
             <input type="text" name="requested_name" placeholder="Ana Rivera" required />
+            <span class="field-help">El nombre con el que se hizo la solicitud.</span>
           </label>
           <label>
-            Cobertura solicitada
-            <input type="text" name="requested_coverage" placeholder="450000" required />
+            Cobertura que se pidió
+            <input type="text" name="requested_coverage" placeholder="450000" required inputmode="decimal" />
+            <span class="field-help">En dólares. Puedes escribir 450000 o $450,000.00.</span>
           </label>
           <label>
-            Premium mostrado en UI
-            <input type="text" name="ui_premium" placeholder="62.00" required />
+            Prima que muestra tu cotizador (mensual)
+            <input type="text" name="ui_premium" placeholder="62.00" required inputmode="decimal" />
+            <span class="field-help">La cifra mensual que ves en la pantalla del sistema.</span>
           </label>
-          <button type="submit" class="btn-primary">Verificar</button>
+          <button type="submit" class="btn-primary">Verificar documento</button>
         </form>
-        <p id="upload-error" class="error-msg" hidden></p>
+        <p id="upload-error" class="alert alert-danger" hidden></p>
       </div>
     </aside>
 
     <section class="detail" id="detail">
       <div class="empty-state">
-        <p>Selecciona un caso a la izquierda, o sube un PDF para verificarlo.</p>
+        <p>👈 Elige un caso a la izquierda para ver la verificación completa.</p>
       </div>
     </section>
   </main>
