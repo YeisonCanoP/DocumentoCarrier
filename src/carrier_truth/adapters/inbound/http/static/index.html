@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Verdad del Documento del Carrier</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>La Verdad del Documento del Carrier</h1>
+      <p>La fuente de verdad para dinero y cobertura es el documento del carrier — nunca lo solicitado ni lo que muestra una interfaz.</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <h2>Casos</h2>
+        <button id="refresh-btn" class="btn-ghost" title="Recargar casos">↻</button>
+      </div>
+      <ul id="case-list" class="case-list">
+        <li class="case-list-empty">Cargando…</li>
+      </ul>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="upload-box">
+        <h2>Verificar un PDF cualquiera</h2>
+        <p class="hint">Demuestra que el motor no está afinado a estos 6 casos.</p>
+        <form id="verify-form">
+          <label>
+            Documento (PDF)
+            <input type="file" name="document" accept="application/pdf" required />
+          </label>
+          <label>
+            Nombre solicitado
+            <input type="text" name="requested_name" placeholder="Ana Rivera" required />
+          </label>
+          <label>
+            Cobertura solicitada
+            <input type="text" name="requested_coverage" placeholder="450000" required />
+          </label>
+          <label>
+            Premium mostrado en UI
+            <input type="text" name="ui_premium" placeholder="62.00" required />
+          </label>
+          <button type="submit" class="btn-primary">Verificar</button>
+        </form>
+        <p id="upload-error" class="error-msg" hidden></p>
+      </div>
+    </aside>
+
+    <section class="detail" id="detail">
+      <div class="empty-state">
+        <p>Selecciona un caso a la izquierda, o sube un PDF para verificarlo.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
