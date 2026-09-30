@@ -244,13 +244,16 @@ function renderField(field) {
 
 function renderVerdictBanner(report) {
   const sev = report.outcome_severity;
+  // <div>, no <p>: <details> es una de las etiquetas que el HTML5 usa para
+  // cerrar automáticamente un <p> abierto, así que anidarlo ahí producía HTML
+  // inválido (el navegador lo recupera solo, pero no hay razón para dejarlo mal).
   const authorityNote = report.authority.is_authoritative
     ? ""
     : `
-      <p class="verdict-note">
+      <div class="verdict-note">
         Motivo: ${escapeHtml(report.authority.label)}.
         ${renderEvidence(report.authority.evidence, { summary: "📄 Ver dónde lo dice el documento" })}
-      </p>
+      </div>
     `;
 
   return `
