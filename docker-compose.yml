@@ -1,0 +1,32 @@
+# Demo reproducible: `docker compose up --build` y abrir http://localhost:8000
+services:
+  api:
+    build:
+      context: .
+      # Explícito: sin esto, Docker construiría la última etapa del Dockerfile
+      # (testing) y la imagen de producción llevaría pytest dentro.
+      target: runtime
+    image: carrier-truth:1.0.0
+    ports:
+      - "8000:8000"
+    environment:
+      CARRIER_DATA_DIR: /app/datos_prueba/carrier-truth
+    # Solo lectura: el servicio verifica documentos, nunca los modifica. Si algo
+    # intentara escribir, queremos que falle de forma evidente y no en silencio.
+    volumes:
+      - ./datos_prueba:/app/datos_prueba:ro
+    restart: unless-stopped
+
+  # Los tests dentro del contenedor, sobre la misma base que se despliega:
+  #   docker compose run --rm tests
+  tests:
+    build:
+      context: .
+      target: testing
+    image: carrier-truth:1.0.0-testing
+    profiles: ["tests"]
+    environment:
+      CARRIER_DATA_DIR: /app/datos_prueba/carrier-truth
+    volumes:
+      - ./datos_prueba:/app/datos_prueba:ro
+      - ./tests:/app/tests:ro
