@@ -1,6 +1,12 @@
 # Bitácora interna de modelado: cuaderno de trabajo, no entregable.
 modelado/
 
+# Documentos del proceso de selección (nombran la empresa y el reto): no se
+# publican. Los PDFs sintéticos y quote_requests.json sí quedan en el repo,
+# son solo fixtures que la app necesita para correr.
+datos_prueba/carrier-truth/README.md
+datos_prueba/carrier-truth/RETO_UNIVERSAL_SCREEN_SHARING.md
+
 .venv/
 __pycache__/
 *.py[cod]
